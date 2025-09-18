@@ -24,7 +24,7 @@ This project demonstrates CRUD operations, MongoDB integration, and clean API de
 
 
 ## 📂 Project Structure
-
+```bash
 ParkingSystem/
 │── Controllers/                 # API Controllers
 │   └── ParkingController.cs
@@ -45,4 +45,4 @@ ParkingSystem/
 │── appsettings.Development.json  # App configuration (ignored in GitHub)
 │── Program.cs                    # App entry point
 │── ParkingSystem.csproj          # Project file
-
+```
