@@ -1,8 +1,10 @@
-﻿namespace ParkingSystem.Models
+﻿
+
+namespace Models
 {
     public class ParkingDatabaseSetting : IParkingDatabase
     {
-       public string ConnectionString { get; set; } = string.Empty;
+        public string ConnectionString { get; set; } = string.Empty;
 
         public string DatabaseName { get; set; } = string.Empty;
 

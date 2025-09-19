@@ -1,6 +1,6 @@
-using ParkingSystem.Models;
+using Models;
 using Microsoft.Extensions.Options;
-using ParkingSystem.Services;
+using Services;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);

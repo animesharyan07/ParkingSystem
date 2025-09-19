@@ -1,16 +1,17 @@
-﻿using ParkingSystem.Models;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
+using Models;
 
-namespace ParkingSystem.Services
+
+namespace Services
 {
     public class ParkingService : IParkingServices
     {
         private readonly IMongoCollection<Parking> _parking;
 
-        public ParkingService(IParkingDatabase settings, IMongoClient mongoClient) 
+        public ParkingService(IParkingDatabase settings, IMongoClient mongoClient)
         {
-            var database= mongoClient.GetDatabase(settings.DatabaseName);
-            _parking =database.GetCollection<Parking>(settings.CollectionName); 
+            var database = mongoClient.GetDatabase(settings.DatabaseName);
+            _parking = database.GetCollection<Parking>(settings.CollectionName);
 
         }
 
@@ -28,7 +29,7 @@ namespace ParkingSystem.Services
 
         public Parking Get(string id)
         {
-            return _parking.Find(parking=>parking.Id==id).FirstOrDefault();
+            return _parking.Find(parking => parking.Id == id).FirstOrDefault();
         }
 
         public void Remove(string id)
