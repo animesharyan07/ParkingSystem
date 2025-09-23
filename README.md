@@ -1,11 +1,11 @@
-# 🚗 Parking System API (ASP.NET Core + MongoDB)
+# Parking System API (ASP.NET Core + MongoDB)
 
 A simple Parking System built using **ASP.NET Web API** and **MongoDB**.  
 This project demonstrates CRUD operations, MongoDB integration, and clean API design.
 
 ---
 
-## 📌 Features
+## Features
 - Create, Read, Update, Delete (CRUD) Parking records  
 - MongoDB integration with `MongoDB.Driver`  
 - Auto-handling of MongoDB collections (no need to pre-create)  
@@ -14,7 +14,7 @@ This project demonstrates CRUD operations, MongoDB integration, and clean API de
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Backend**: ASP.NET Core Web API (.NET 8)  
 - **Database**: MongoDB Atlas (Cloud)   
 - **Serialization**: MongoDB.Bson  
