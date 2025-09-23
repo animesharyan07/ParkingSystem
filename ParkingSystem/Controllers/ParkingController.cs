@@ -7,19 +7,37 @@ namespace ParkingSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ParkingController : ControllerBase
     {
         private readonly IParkingServices parkingServices;
+        private readonly ILogger<ParkingController> _logger;
 
-        public ParkingController(IParkingServices parkingServices)
+        public ParkingController(IParkingServices parkingServices, ILogger<ParkingController> logger)
         {
             this.parkingServices = parkingServices;
+            _logger = logger;
         }
+        [HttpGet]
+        //public IEnumerable<Parking> Get()
+        //{
+        //    _logger.LogInformation("Get() method called in ParkingController");  // <-- Logging
+        //    return parkingServices.Get();
+
+        //}
         // GET: api/<ParkingController>
         [HttpGet]
+
         public ActionResult<List<Parking>> Get()
         {
-            return parkingServices.Get();
+            _logger.LogInformation("Get() method called in ParkingController");
+            _logger.LogWarning("This is a warning message from Get()");
+            _logger.LogError("This is an error message from Get()");
+            _logger.LogDebug("This is a DEbug Mode");
+            _logger.LogCritical("This is a Critical");
+
+            var parkings = parkingServices.Get();
+            return Ok(parkings);
         }
 
         // GET api/<ParkingController>/5

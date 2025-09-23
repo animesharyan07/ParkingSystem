@@ -1,23 +1,37 @@
 using Models;
 using Microsoft.Extensions.Options;
 using Services;
+using DBSettings;
+using Repository;
 using MongoDB.Driver;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.Configure<ParkingDatabaseSetting>(builder.Configuration.GetSection(nameof(ParkingDatabaseSetting)));
 
-builder.Services.AddSingleton<IParkingDatabase>(sp => sp.GetRequiredService<IOptions<ParkingDatabaseSetting>>().Value);
+builder.Services.AddSingleton<IParkingDatabase>(sp =>
+    sp.GetRequiredService<IOptions<ParkingDatabaseSetting>>().Value);
 
-builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configuration.GetValue<string>("ParkingDatabaseSetting:ConnectionString")));
+builder.Services.AddSingleton<IMongoClient>(s =>
+    new MongoClient(builder.Configuration.GetValue<string>("ParkingDatabaseSetting:ConnectionString")));
 
-builder.Services.AddScoped<IParkingServices, ParkingService>(); 
+// Register Repository
+builder.Services.AddScoped<IParkingRepository, ParkingRepository>();
 
+// Register Services
+builder.Services.AddScoped<IParkingServices, ParkingService>();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddLogging();
+//builder.Logging.ClearProviders();            // Remove default providers
+//builder.Logging.AddConsole();                // Add console logging
+//builder.Logging.SetMinimumLevel(LogLevel.Information); // Minimum log level
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

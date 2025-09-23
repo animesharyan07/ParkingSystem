@@ -1,6 +1,4 @@
-﻿
-
-namespace Models
+﻿namespace DBSettings
 {
     public class ParkingDatabaseSetting : IParkingDatabase
     {

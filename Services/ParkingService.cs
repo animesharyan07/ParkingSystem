@@ -1,47 +1,42 @@
-﻿using MongoDB.Driver;
-using Models;
-
-
+﻿using Models;
+using Repository;
+using System.Collections.Generic;
 namespace Services
 {
     public class ParkingService : IParkingServices
     {
-        private readonly IMongoCollection<Parking> _parking;
+        private readonly IParkingRepository _parkingRepository;
 
-        public ParkingService(IParkingDatabase settings, IMongoClient mongoClient)
+        public ParkingService(IParkingRepository parkingRepository)
         {
-            var database = mongoClient.GetDatabase(settings.DatabaseName);
-            _parking = database.GetCollection<Parking>(settings.CollectionName);
-
+            _parkingRepository = parkingRepository;
         }
 
         public Parking Create(Parking parking)
         {
-            _parking.InsertOne(parking);
+            // repository is async → blocking here for simplicity
+            _parkingRepository.CreateAsync(parking).Wait();
             return parking;
         }
 
         public List<Parking> Get()
         {
-            return _parking.Find(parking => true).ToList();
-
+            return _parkingRepository.GetAllAsync().Result.ToList();
         }
 
-        public Parking Get(string id)
+        public Parking? Get(string id)
         {
-            return _parking.Find(parking => parking.Id == id).FirstOrDefault();
+            return _parkingRepository.GetByIdAsync(id).Result;
         }
 
         public void Remove(string id)
         {
-            _parking.DeleteOne(parking => parking.Id == id);
-
+            _parkingRepository.DeleteAsync(id).Wait();
         }
 
         public void Update(string id, Parking parkingIn)
         {
-            _parking.ReplaceOne(parking => parking.Id == id, parkingIn);
-
+            _parkingRepository.UpdateAsync(id, parkingIn).Wait();
         }
     }
 }
