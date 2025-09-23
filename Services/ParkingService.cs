@@ -1,7 +1,7 @@
-﻿using Models;
-using Repository;
+﻿using ParkingSystem.Models;
+using ParkingSystem.Repository;
 using System.Collections.Generic;
-namespace Services
+namespace ParkingSystem.Services
 {
     public class ParkingService : IParkingServices
     {

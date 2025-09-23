@@ -1,8 +1,8 @@
 ﻿using Xunit;
 using Moq;
-using Services;
-using Repository;
-using Models;
+using ParkingSystem.Services;
+using ParkingSystem.Repository;
+using ParkingSystem.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

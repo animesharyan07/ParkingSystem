@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem", "ParkingSystem\ParkingSystem.csproj", "{9C8208B2-1E06-4045-9F0D-E2CDE0BF5CCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.API", "ParkingSystem\ParkingSystem.API.csproj", "{9C8208B2-1E06-4045-9F0D-E2CDE0BF5CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{AA76A1D6-3F7E-41C0-B46F-580B3998231A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Models", "Models\ParkingSystem.Models.csproj", "{AA76A1D6-3F7E-41C0-B46F-580B3998231A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{9E094B96-EDDE-4A0A-A8BC-1BCEF0607C6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Services", "Services\ParkingSystem.Services.csproj", "{9E094B96-EDDE-4A0A-A8BC-1BCEF0607C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBSettings", "DBSettings\DBSettings.csproj", "{537F14CD-4E44-43B0-8439-FF6E73A24DA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.DBSettings", "DBSettings\ParkingSystem.DBSettings.csproj", "{537F14CD-4E44-43B0-8439-FF6E73A24DA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{2364BBE8-A214-43A1-9D49-F687EC247582}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Repository", "Repository\ParkingSystem.Repository.csproj", "{2364BBE8-A214-43A1-9D49-F687EC247582}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingSystem.Test", "ParkingSystem.Test\ParkingSystem.Test.csproj", "{E16F1AE0-607A-4BA5-A930-C86F9B037EB1}"
 EndProject

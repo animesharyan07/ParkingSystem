@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Models;
+using ParkingSystem.Models;
 
-namespace Services
+namespace ParkingSystem.Services
 {
     public interface IParkingServices
     {

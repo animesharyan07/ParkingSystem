@@ -15,10 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DBSettings\DBSettings.csproj" />
-    <ProjectReference Include="..\Models\Models.csproj" />
-    <ProjectReference Include="..\Repository\Repository.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\DBSettings\ParkingSystem.DBSettings.csproj" />
+    <ProjectReference Include="..\Models\ParkingSystem.Models.csproj" />
+    <ProjectReference Include="..\Repository\ParkingSystem.Repository.csproj" />
+    <ProjectReference Include="..\Services\ParkingSystem.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Log\" />
   </ItemGroup>
 
 </Project>

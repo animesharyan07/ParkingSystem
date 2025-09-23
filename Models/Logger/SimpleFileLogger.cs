@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 //using Castle.Core.Logging;
 using Microsoft.Extensions.Logging;
 
-namespace Models.Logger
+namespace ParkingSystem.Models.Logger
 {
     public class SimpleFileLogger:ILogger
     {

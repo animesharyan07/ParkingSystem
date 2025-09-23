@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DBSettings;
+using ParkingSystem.DBSettings;
 using Microsoft.Extensions.Options;
-using Models;
+using ParkingSystem.Models;
 using MongoDB.Driver;
 
-namespace Repository
+namespace ParkingSystem.Repository
 {
     public class ParkingRepository(IOptions<ParkingDatabaseSetting> settings, IMongoClient mongoClient) : Repository<Parking>(settings, mongoClient), IParkingRepository
     {

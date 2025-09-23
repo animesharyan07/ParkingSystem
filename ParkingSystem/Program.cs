@@ -1,11 +1,12 @@
-using Models;
-using Microsoft.Extensions.Options;
-using Services;
-using DBSettings;
-using Repository;
-using MongoDB.Driver;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using ParkingSystem.DBSettings;
+using ParkingSystem.Models;
+using ParkingSystem.Models.Logger;
+using ParkingSystem.Repository;
+using ParkingSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ builder.Services.AddLogging();
 //builder.Logging.ClearProviders();            // Remove default providers
 //builder.Logging.AddConsole();                // Add console logging
 //builder.Logging.SetMinimumLevel(LogLevel.Information); // Minimum log level
+builder.Logging.AddProvider(new SimpleFileLoggerProvider("Log/log.txt"));
 
 
 builder.Services.AddEndpointsApiExplorer();

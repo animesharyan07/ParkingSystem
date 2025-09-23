@@ -1,13 +1,11 @@
-﻿ using Microsoft.AspNetCore.Mvc;
-using Services;
-using Models;
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using Microsoft.AspNetCore.Mvc;
+using ParkingSystem.Services;
+using ParkingSystem.Models;
 
-namespace ParkingSystem.Controllers
+namespace ParkingSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class ParkingController : ControllerBase
     {
         private readonly IParkingServices parkingServices;
@@ -18,25 +16,22 @@ namespace ParkingSystem.Controllers
             this.parkingServices = parkingServices;
             _logger = logger;
         }
-        [HttpGet]
-        //public IEnumerable<Parking> Get()
-        //{
-        //    _logger.LogInformation("Get() method called in ParkingController");  // <-- Logging
-        //    return parkingServices.Get();
 
-        //}
         // GET: api/<ParkingController>
         [HttpGet]
-
         public ActionResult<List<Parking>> Get()
         {
-            _logger.LogInformation("Get() method called in ParkingController");
-            _logger.LogWarning("This is a warning message from Get()");
-            _logger.LogError("This is an error message from Get()");
-            _logger.LogDebug("This is a DEbug Mode");
-            _logger.LogCritical("This is a Critical");
+            _logger.LogInformation("Fetching all parking records...");
 
             var parkings = parkingServices.Get();
+
+            if (parkings == null || !parkings.Any())
+            {
+                _logger.LogWarning("No parking records found.");
+                return NotFound("No parking records available.");
+            }
+
+            _logger.LogInformation("Successfully retrieved {count} parking records.", parkings.Count);
             return Ok(parkings);
         }
 
@@ -44,35 +39,54 @@ namespace ParkingSystem.Controllers
         [HttpGet("{id}")]
         public ActionResult<Parking> Get(string id)
         {
+            _logger.LogInformation("Fetching parking record with ID: {id}", id);
 
             var parking = parkingServices.Get(id);
             if (parking == null)
             {
+                _logger.LogWarning("Parking record with ID {id} not found.", id);
                 return NotFound($"Parking with ID={id} not found");
             }
-            return parking;
 
+            _logger.LogInformation("Successfully retrieved parking record with ID: {id}", id);
+            return Ok(parking);
         }
 
         // POST api/<ParkingController>
         [HttpPost]
         public ActionResult<Parking> Post([FromBody] Parking parking)
         {
+            if (parking == null)
+            {
+                _logger.LogError("POST request failed. Parking object is null.");
+                return BadRequest("Parking object cannot be null.");
+            }
+
             parkingServices.Create(parking);
+            _logger.LogInformation("Created new parking record with ID: {id}", parking.Id);
 
             return CreatedAtAction(nameof(Get), new { id = parking.Id }, parking);
         }
 
         // PUT api/<ParkingController>/5
         [HttpPut("{id}")]
-        public ActionResult<Parking> Put(string id, [FromBody] Parking parking)
+        public ActionResult Put(string id, [FromBody] Parking parking)
         {
+            if (parking == null)
+            {
+                _logger.LogError("PUT request failed. Parking object is null for ID: {id}", id);
+                return BadRequest("Parking object cannot be null.");
+            }
+
             var existingParking = parkingServices.Get(id);
             if (existingParking == null)
             {
+                _logger.LogWarning("Parking record with ID {id} not found for update.", id);
                 return NotFound($"Parking with ID={id} not found");
             }
+
             parkingServices.Update(id, parking);
+            _logger.LogInformation("Updated parking record with ID: {id}", id);
 
             return NoContent();
         }
@@ -81,14 +95,19 @@ namespace ParkingSystem.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)
         {
+            _logger.LogInformation("Attempting to delete parking record with ID: {id}", id);
+
             var parking = parkingServices.Get(id);
             if (parking == null)
             {
+                _logger.LogWarning("Parking record with ID {id} not found for deletion.", id);
                 return NotFound($"Parking with ID={id} not found");
             }
-            parkingServices.Remove(parking.Id);
-            return Ok($"Parking with ID={id} deleted");
 
+            parkingServices.Remove(parking.Id);
+            _logger.LogInformation("Deleted parking record with ID: {id}", id);
+
+            return Ok($"Parking with ID={id} deleted");
         }
     }
 }

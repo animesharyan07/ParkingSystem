@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
+using ParkingSystem.Models;
 
-namespace Repository
+namespace ParkingSystem.Repository
 {
     public interface IParkingRepository: IRepository<Parking>
     {

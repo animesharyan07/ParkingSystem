@@ -1,12 +1,12 @@
 ﻿using Xunit;
 using Moq;
-using Repository;
-using Models;
+using ParkingSystem.Repository;
+using ParkingSystem.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using DBSettings;
+using ParkingSystem.DBSettings;
 namespace ParkingSystem.Test
 {
     public class ParkingRepositoryTests

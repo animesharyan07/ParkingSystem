@@ -1,4 +1,4 @@
-﻿namespace DBSettings
+﻿namespace ParkingSystem.DBSettings
 {
     public class ParkingDatabaseSetting : IParkingDatabase
     {

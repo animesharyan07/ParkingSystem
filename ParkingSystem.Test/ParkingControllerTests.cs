@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Models;
+using ParkingSystem.Models;
 using Moq;
-using ParkingSystem.Controllers;
-using Services;
+using ParkingSystem.API.Controllers;
+using ParkingSystem.Services;
 using Xunit;
 
 namespace Tests
