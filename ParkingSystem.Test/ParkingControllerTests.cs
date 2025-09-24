@@ -26,9 +26,9 @@ namespace Tests
         public void Get_ReturnsOkWithParkings()
         {
             _mockService.Setup(s => s.Get()).Returns(new List<Parking>
-    {
-        new Parking { Id = "1", Name = "Lot A" }
-    });
+            {
+                new Parking { Id = "1", Name = "Lot A" }
+            });
 
             var result = _controller.Get();
             var okResult = Assert.IsType<OkObjectResult>(result);
