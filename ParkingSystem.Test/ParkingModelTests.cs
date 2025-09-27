@@ -35,7 +35,7 @@ namespace ParkingSystem.Test
             };
 
             var results = ValidateModel(model);
-            Assert.Empty(results); // ✅ No validation errors
+            Assert.Empty(results); 
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace ParkingSystem.Test
             {
                 Name = "Test Parking",
                 Location = "Test City",
-                Capacity = -5, // ❌ Invalid
+                Capacity = -5,
                 AvailableSpots = 10,
                 HourlyRate = 15m,
                 EntryTime = DateTime.UtcNow,
@@ -83,7 +83,7 @@ namespace ParkingSystem.Test
                 Location = "Test City",
                 Capacity = 100,
                 AvailableSpots = 80,
-                HourlyRate = -10m, // ❌ Invalid
+                HourlyRate = -10m, 
                 EntryTime = DateTime.UtcNow,
                 VehicleNumber = "KA-05-AB-1234"
             };
@@ -100,7 +100,7 @@ namespace ParkingSystem.Test
                 Name = "Overflow Parking",
                 Location = "Airport Zone",
                 Capacity = 100,
-                AvailableSpots = 120, // Business logic issue, but annotations allow it
+                AvailableSpots = 120, 
                 HourlyRate = 50m,
                 EntryTime = DateTime.UtcNow,
                 VehicleNumber = "MH-12-XY-4567"
@@ -108,7 +108,7 @@ namespace ParkingSystem.Test
 
             var results = ValidateModel(model);
 
-            // ✅ Validation will pass, but in real business logic you should check this in service layer
+            
             Assert.Empty(results);
         }
 
@@ -123,7 +123,7 @@ namespace ParkingSystem.Test
                 AvailableSpots = 90,
                 HourlyRate = 25m,
                 EntryTime = DateTime.UtcNow,
-                ExitTime = DateTime.UtcNow.AddHours(-2), // ❌ Invalid business rule
+                ExitTime = DateTime.UtcNow.AddHours(-2), 
                 VehicleNumber = "DL-09-AB-4321"
             };
 
@@ -131,7 +131,7 @@ namespace ParkingSystem.Test
             // we simulate a custom validation check here:
             bool isValidTime = model.ExitTime == null || model.ExitTime >= model.EntryTime;
 
-            Assert.False(isValidTime); // ✅ Fails as expected
+            Assert.False(isValidTime); 
         }
 
         [Fact]
@@ -145,7 +145,7 @@ namespace ParkingSystem.Test
                 AvailableSpots = 40,
                 HourlyRate = 15m,
                 EntryTime = DateTime.UtcNow,
-                VehicleNumber = "", // ❌ Required but empty
+                VehicleNumber = "", //Required but empty
                 IsPaid = false
             };
 

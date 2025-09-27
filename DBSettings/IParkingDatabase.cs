@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
 
-namespace ParkingSystem.DBSettings
-{
-    public interface IParkingDatabase
+    namespace ParkingSystem.DBSettings
     {
-        string ConnectionString { get; set; }
+        public interface IParkingDatabase
+        {
+            string ConnectionString { get; set; }
 
-        string DatabaseName { get; set; }
+            string DatabaseName { get; set; }
 
-        string CollectionName { get; set; }
+            string CollectionName { get; set; }
 
+            string UserCollectionName { get; set; }
+        }
     }
-}
